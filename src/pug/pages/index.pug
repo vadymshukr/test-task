@@ -1,0 +1,303 @@
+extends ../layout/main
+block variable
+block meta
+	title= 'test'
+	meta(name='description', content='')
+block head
+		link(rel='stylesheet', href="./assets/styles/main.min.css")
+	
+block content
+	.page
+		.container
+			.row
+				.col.col__small
+					.info-block
+						.info-block__header
+							h3.title Booking details
+							span.info-block__badge.badge.badge_green Booking ID: 239503
+						.info-block__main
+							ul.info-block__short-details-list.short-details-list
+								.short-details-list__item
+									.short-details-list__data Booked by:
+									.short-details-list__data 
+										.user
+											.user__userpic.userpic.userpic_orange
+												span.userpic__text KB
+											span.user__name Kirill Buriak
+								.short-details-list__item
+									.short-details-list__data 
+										span.badge.badge_gray Member
+									.short-details-list__data kathrynpena@ibm.com
+								.short-details-list__item
+									.short-details-list__data Booking date:
+									.short-details-list__data May 1, 2020
+								.short-details-list__item
+									.short-details-list__data Status:
+									.short-details-list__data 
+										.status.status_confirmed 
+											+icon('confirmed', 'status__icon')
+											span Confirmed
+					.info-block
+						.info-block__header
+								h3.title Luggage
+						.info-block__main
+							.info-block__person-luggage.person-luggage
+								.person-luggage__user.user
+									.user__userpic.userpic.userpic_red
+										span.userpic__text KP
+									span.user__name Kathryn Pena
+								ul.person-luggage__luggage-list.luggage-list
+									li.luggage-list__item
+										span JFK - FRA
+										span 1 x 15kg checked bag
+										span $14
+									li.luggage-list__item
+										span JFK - FRA
+										span 1 x 15kg checked bag
+										span $14
+							.info-block__person-luggage.person-luggage
+								.person-luggage__user.user
+									.user__userpic.userpic.userpic_blue
+										span.userpic__text LN
+									span.user__name Lee Nguyen
+								ul.person-luggage__luggage-list.luggage-list
+									li.luggage-list__item
+										span JFK - FRA
+										span 1 x 15kg checked bag
+										span $14
+									li.luggage-list__item
+										span JFK - FRA
+										span 1 x 15kg checked bag
+										span $14
+					.info-block
+						.info-block__header
+								h3.title Price Details
+						.info-block__main
+							.info-block__price-details.price-details
+								.price-details__header
+									span.price-details__subtitle.subtitle Round trip 
+									span.price-details__subtitle.subtitle 2 travelers
+								ul.price-details__list
+									li.price-details__item
+										.price-details__key 
+											span Total rate
+											span.question.price-details__question 
+												span ? 
+										.price-details__value $14.50
+									li.price-details__item
+										.price-details__key Taxes
+										.price-details__value $25.50
+									li.price-details__item
+										.price-details__key SoldoutNight Fee
+										.price-details__value.price-details__value_green Free
+								.price-details__total
+									span.title Total Price
+									span.title $684.75
+				.col.col__big
+					.info-block
+						.info-block__header
+								h3.title Booking details
+						.info-block__main.info-block__main_wo-padding
+							ul.info-block__booking-details.booking-details
+								.booking-details__item
+									.airlines.booking-details__airlines
+										.airlines__top
+											.airlines__main-info
+												+img('logos/delta.svg').airlines__pic
+												span.airlines__title Delta Air Lines
+											span.date Tue, April 25, 2020
+					
+										.airlines__features
+											span DL9367
+											span Economy
+											span Airbus A330-200
+									.path-wrapper.booking-details__path-wrapper
+										.booking-details__path.path
+											.path__row
+												.path__time.title 19:55
+												.airport.path__airport
+													.airport__name 
+														span.title.airport__title JFK
+														span John F. Kennedy International
+													.airport__city New York
+											.path__row
+												span Duration
+												+icon('clock', 'path__clock-icon')
+												span 7h 55m
+											.path__row
+												.path__time.path__time_plus-day.title 09:50
+												.airport.path__airport
+													.airport__name 
+														span.title.airport__title FRA
+														span Frankfurt International Airport
+													.airport__city Frankfurt
+										.booking-details__links.links-booking-details
+											a(href="#").links-booking-details__link
+												+icon('refund','links-booking-details__icon-refund')
+												span Refundable
+												+icon('layers', 'links-booking-details__icon-layers')
+											a(href="#").links-booking-details__link
+												+icon('fare', 'links-booking-details__icon-fare')
+												span Fare rules
+								.booking-details__item
+									.airlines.booking-details__airlines
+										.airlines__top
+											.airlines__main-info
+												+img('logos/klm.svg').airlines__pic
+												span.airlines__title KLM Royal Dutch Airlines (operated by Delta Air Lines)
+											span.date Fr, May 01, 2020
+					
+										.airlines__features
+											span DL9367
+											span Economy
+											span Airbus A330-200
+									.path-wrapper.booking-details__path-wrapper
+										.booking-details__path.path
+											.path__row
+												.path__time.title 19:55
+												.airport.path__airport
+													.airport__name 
+														span.title.airport__title FRA
+														span Frankfurt International Airport
+													.airport__city Frankfurt
+											.path__row
+												span Duration
+												+icon('clock', 'path__clock-icon')
+												span 7h 55m
+											.path__row
+												.path__time.path__time_plus-day.title 09:50
+												.airport.path__airport
+													.airport__name 
+														span.title.airport__title JFK
+														span John F. Kennedy International
+													.airport__city New York
+										.booking-details__links.links-booking-details
+											a(href="#").links-booking-details__link
+												+icon('refund','links-booking-details__icon-refund')
+												span Refundable
+												+icon('layers', 'links-booking-details__icon-layers')
+											a(href="#").links-booking-details__link
+												+icon('fare', 'links-booking-details__icon-fare')
+												span Fare rules					
+					.info-block
+						.info-block__header
+								h3.title Guest Information
+						.info-block__main.info-block__main_guest-info
+							ul.info-block__guest-info.guest-info
+								li.guest-info__guest.guest
+									.guest__pic-wrapper
+										.guest__userpic.userpic.userpic_red
+											span.userpic__text KP
+									ul.guest__info
+										li.guest__item.guest__item_flex
+											span.guest__text.guest__text_big Mrs. Kathryn Pena
+											.guest__mini-user-pic.mini-user-pic.mini-user-pic_active
+												+icon('union','mini-user-pic__icon')
+										li.guest__item 
+											span.guest__text.guest__text_big kathrynpena@ibm.com
+										li.guest__item.guest__item_flex
+											span.guest__text.guest__text_big +380 66 255 33 67
+											+whatsup-icon('guest__icon whatsup_active')
+											+telegram-icon('guest__icon telegram_active')
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Number:
+											span.guest__text FJ714612
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Country:
+											span.guest__text Ukraine
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Expiration:
+											span.guest__text May 01, 2020
+										li.guest__item 
+											span.guest__text.guest__text_black Nationality:
+											span.guest__text Ukraine
+										li.guest__item 
+											span.guest__text.guest__text_black Date of Birth:  
+											span.guest__text May 01, 2020
+										li.guest__item 
+											span.guest__text.guest__text_black Gender:
+											span.guest__text Female
+										li.guest__item 
+											span.guest__text.guest__text_black Flyer Program:
+											span.guest__text 7th Heaven rewards   |   WE223546
+								li.guest-info__guest.guest
+									.guest__pic-wrapper
+										.guest__userpic.userpic.userpic_purple
+											span.userpic__text AM
+									ul.guest__info
+										li.guest__item.guest__item_flex
+											span.guest__text.guest__text_big Aubrey Mckinney
+											.guest__mini-user-pic.mini-user-pic
+												+icon('union','mini-user-pic__icon')
+										li.guest__item 
+											span.guest__text.guest__text_big kathrynpena@ibm.com
+										li.guest__item.guest__item_flex
+											span.guest__text.guest__text_big +380 66 255 33 67
+											+whatsup-icon('guest__icon')
+											+telegram-icon('guest__icon telegram_active')
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Number:
+											span.guest__text FJ714612
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Country:
+											span.guest__text Ukraine
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Expiration:
+											span.guest__text May 01, 2020
+										li.guest__item 
+											span.guest__text.guest__text_black Nationality:
+											span.guest__text Ukraine
+										li.guest__item 
+											span.guest__text.guest__text_black Date of Birth:  
+											span.guest__text May 01, 2020
+										li.guest__item 
+											span.guest__text.guest__text_black Gender:
+											span.guest__text Female
+										li.guest__item 
+											span.guest__text.guest__text_black Flyer Program:
+											span.guest__text 7th Heaven rewards   |   WE223546
+								li.guest-info__guest.guest
+									.guest__pic-wrapper
+										.guest__userpic.userpic.userpic_yellow
+											span.userpic__text GA
+									ul.guest__info
+										li.guest__item.guest__item_flex
+											span.guest__text.guest__text_big Greg Alexander
+											.guest__mini-user-pic.mini-user-pic
+												+icon('union','mini-user-pic__icon')
+										li.guest__item 
+											span.guest__text.guest__text_big kathrynpena@ibm.com
+										li.guest__item.guest__item_flex
+											span.guest__text.guest__text_big +380 66 255 33 67
+											+whatsup-icon('guest__icon whatsup_active')
+											+telegram-icon('guest__icon')
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Number:
+											span.guest__text FJ714612
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Country:
+											span.guest__text Ukraine
+										li.guest__item 
+											span.guest__text.guest__text_black Passport Expiration:
+											span.guest__text May 01, 2020
+										li.guest__item 
+											span.guest__text.guest__text_black Nationality:
+											span.guest__text Ukraine
+										li.guest__item 
+											span.guest__text.guest__text_black Date of Birth:  
+											span.guest__text May 01, 2020
+										li.guest__item 
+											span.guest__text.guest__text_black Gender:
+											span.guest__text Female
+										li.guest__item 
+											span.guest__text.guest__text_black Flyer Program:
+											span.guest__text 7th Heaven rewards   |   WE223546
+
+
+					.info-block
+						.info-block__header
+								h3.title Loyalty Program
+						.info-block__main
+							.info-block__loyalty.loyalty
+								span.loyalty__text.loyalty__text_big 7th Heaven rewards
+								span.loyalty__text.loyalty__text_small WE223546
