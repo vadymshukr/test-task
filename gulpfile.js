@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const  ghPages = require('gulp-gh-pages');
 const pug = require('gulp-pug');
 const rename = require('gulp-rename');
 const del = require('del');
@@ -23,14 +24,14 @@ const imagemin = require('gulp-imagemin');
 const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const imageminPngquant = require('imagemin-pngquant');
 //svg
-// const svgSprites = require("gulp-svg-sprites");
-// const cheerio = require('gulp-cheerio');
+const svgSprites = require("gulp-svg-sprites");
+const cheerio = require('gulp-cheerio');
 // const cleanSvg = require('gulp-cheerio-clean-svg');
 
-const svgSprite = require('gulp-svg-sprite'),
+// const svgSprite = require('gulp-svg-sprite'),
 	// svgmin = require('gulp-svgmin'),
-	cheerio = require('gulp-cheerio'),
-	replace = require('gulp-replace');
+	// cheerio = require('gulp-cheerio');
+const replace = require('gulp-replace');
 
 
 
@@ -59,9 +60,9 @@ const paths = {
         dest: './dist/assets/images'
     },
     svgSprite: {
-        src: './src/assets/images/icons/*.svg',
-        dest: './src/assets/images/sprite/'
-    },
+		src: './src/assets/svg-sprite/*.svg',
+		dest: './src/assets/svg-sprite/sprite/'
+	},
     gulpModules: {
         src: './src/assets/scripts/gulp-modules/*.js',
         dest: './dist/assets/scripts/'
@@ -87,7 +88,7 @@ function watch() {
     gulp.watch(paths.libs.src, libs);
     gulp.watch(paths.static.src, static);
     gulp.watch('./src/pug/**/*.html', templates);
-    gulp.watch('./src/assets/images/icons/*.*', svgSpriteBuild);
+    gulp.watch('./src/assets/svg-sprite/*.*', svgSprite);
 }
 
 // следим за build и релоадим браузер
@@ -143,7 +144,7 @@ function static() {
 }
 
 // svg-sprite
-function svgSpriteBuild() {
+function svgSprite() {
 		return gulp.src(paths.svgSprite.src)
 			.pipe(cheerio({
 				run: function ($) {
@@ -154,20 +155,15 @@ function svgSpriteBuild() {
 				parserOptions: {xmlMode: true}
 			}))
 			.pipe(replace('&gt;', '>'))
-			.pipe(svgSprite({
-				mode: {
-					symbol: {
-						sprite: "sprite.svg",
-						render: {
-							scss: {
-								dest:'../../../styles/sprite.scss',
-								template: './src/assets/styles/assets/sprite-template.scss'
-							}
-						}
-					}
+			.pipe(svgSprites({
+				mode: "symbols",
+				preview: false,
+				selector: "icon-%f",
+				svg: {
+					symbols: 'symbol_sprite.php'
 				}
 			}))
-			.pipe(gulp.dest(paths.svgSprite.dest));
+			.pipe(gulp.dest(paths.svgSprite.dest))
 		}
 
 // images
@@ -223,12 +219,12 @@ exports.gulpModules = gulpModules;
 exports.images = images;
 exports.clean = clean;
 exports.fonts = fonts;
-exports.svgSpriteBuild = svgSpriteBuild;
+exports.svgSprite = svgSprite;
 exports.libs = libs;
 exports.static = static;
 
 gulp.task('default', gulp.series(
-	svgSpriteBuild,
+	svgSprite,
 		clean,
 		libs,
 		gulp.parallel(styles, templates, fonts, gulpModules, images, static),
@@ -339,3 +335,8 @@ gulp.task('prod', gulp.series(
 	_clean,
 	gulp.parallel(_templates, _fonts, _static, _scripts, _styles, _images)
 ));
+
+gulp.task('deploy', function() {
+	return gulp.src('./prod/**/*')
+	  .pipe(ghPages());
+  });

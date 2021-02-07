@@ -12,9 +12,10 @@ mixin testCard(link, src, title, descr)
 //- 		span(class='svg-wrap')&attributes(attributes)
 //- 			svg(class="svg-icon icon--"+ icon + ""  role="presentation")
 //- 				use(xlink:href="#"+ icon + "")
-mixin svg(icon)
-		svg(class="icon--"+ icon + ""  role="presentation")&attributes(attributes)
-			use(xlink:href="#icon-"+ icon + "")
+mixin svg(icon, mod)
+	- mod = mod || ''
+	svg(class="icon-"+ icon + " " + mod  role="presentation")&attributes(attributes)
+		use(xlink:href="#icon-"+ icon + "")
 
 mixin link-blank(href)
 	a(herf=href rel="nofollow" target="_blank")

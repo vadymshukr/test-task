@@ -24,6 +24,7 @@
     "gulp-cheerio-clean-svg": "github:Hiswe/gulp-cheerio-clean-svg",
     "gulp-clean-css": "^4.2.0",
     "gulp-file-include": "^2.1.0",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-imagemin": "^6.1.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
